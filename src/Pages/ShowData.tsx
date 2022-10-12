@@ -7,8 +7,23 @@ export const ShowData = () => {
 
     return (
         <div>
-            Tela ShowData {state.user.name}
+            <h3>Tela ShowData</h3>
+
+            {state.user.name &&
+                <>
+                    Seu nome é: {state.user.name}.
+                    <br />
+                    Você tem: {state.user.age} anos.
+                </>
+            }
+
+            {!state.user.name &&
+                'Sem informações preenchidas!'
+            }
+
             <br />
+            <br />
+
             <Link to="/">Ir para SignUp</Link>
         </div>
     )

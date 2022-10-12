@@ -1,24 +1,37 @@
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { useContext } from 'react';
 import { Context } from '../Contexts/Context';
 
 export const SignUp = () => {
     const { state, dispatch } = useContext(Context);
 
-    const handleChangeName = () => {
+    const handleNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         dispatch({
             type: 'CHANGE_NAME',
             payload: {
-                name: 'Costa'
+                name: event.target.value
             }
-        })
+        });
+    }
+
+    const handleAgeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        dispatch({
+            type: 'CHANGE_AGE',
+            payload: {
+                age: event.target.value
+            }
+        });
     }
 
     return (
         <div>
-            Tela SignUp de {state.user.name} que tem {state.user.age} anos.
-            <button onClick={handleChangeName}>Trocar nome para Costa</button>
+            <h3>Tela SignUp</h3>
+
+            <input type="text" placeholder='Digite um nome' value={state.user.name} onChange={handleNameChange} />
+            <input type="text" placeholder='Digite uma idade' value={state.user.age} onChange={handleAgeChange} />
+
             <br />
+
             <Link to="/exibir">Ir para ShowData</Link>
         </div>
     )
