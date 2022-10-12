@@ -14,7 +14,7 @@ const initialState = {
     age: 21
 }
 
-const Context = createContext<ContextType>(initialState);
+export const Context = createContext<ContextType>(initialState);
 
 export const ContextProvider: React.FC<IContextProps> = ({children}) => {
     return (
